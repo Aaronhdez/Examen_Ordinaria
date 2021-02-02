@@ -31,9 +31,9 @@ public class MovieData {
     private void load() {
         this.add(new Movie("Película1","1999","Terror","Imagen1","Actores",3));
         this.add(new Movie("Película2","1992","Terror","Imagen2","Actores2",2));
-        this.add(new Movie("Película3","1992","Acción","Imagen3","Actores3",3));
-        this.add(new Movie("Película4","1995","Drama","Imagen3","Actores3",3));
-        this.add(new Movie("Película5","1995","Drama","Imagen3","Actores3",3));
+        this.add(new Movie("Película3","1992","Acción","Imagen3","Actores3",4));
+        this.add(new Movie("Película4","1995","Drama","Imagen3","Actores3",7));
+        this.add(new Movie("Película5","1995","Drama","Imagen3","Actores3",8));
         this.currentMovie = this.moviesList.get(0);
     }
     
@@ -66,7 +66,7 @@ public class MovieData {
             public int compare(Object t, Object t1) {
                 Movie m1 = (Movie) t;
                 Movie m2 = (Movie) t1;
-                return m1.getGenre().compareTo(m2.getGenre());
+                return -(Integer) m1.getYear().compareTo(m2.getYear());
             }
         });
     }
@@ -77,7 +77,7 @@ public class MovieData {
             public int compare(Object t, Object t1) {
                 Movie m1 = (Movie) t;
                 Movie m2 = (Movie) t1;
-                return m1.getGenre().compareTo(m2.getGenre());
+                return -(m1.getViews()+"").compareTo(m2.getViews()+"");
             }
         });
     }
@@ -88,7 +88,7 @@ public class MovieData {
             public int compare(Object t, Object t1) {
                 Movie m1 = (Movie) t;
                 Movie m2 = (Movie) t1;
-                return m1.getGenre().compareTo(m2.getGenre());
+                return (m1.getGrade()+"").compareTo(m2.getGrade()+"");
             }
         });
     }
@@ -119,18 +119,23 @@ public class MovieData {
     }
     
     public void autoSort(String field) {
+        System.out.println("\n");
         switch(field){
             case "genre":
                 this.sortByGenre();
+                System.out.println("ORDEN: Género");
                 break;
             case "newer":
                 this.sortByNewer();
+                System.out.println("ORDEN: Más nuevas");
                 break;
             case "views":
                 this.sortByViews();
+                System.out.println("ORDEN: Más vistas");
                 break;
             case "grade":
                 this.sortByGrade();
+                System.out.println("ORDEN: Calificación");
                 break;
             default:
                 break;

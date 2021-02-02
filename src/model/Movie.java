@@ -85,7 +85,7 @@ public class Movie {
 
     @Override
     public String toString() {
-        return this.getTitle() +" | "+ this.getYear() +" | "+ this.getGenre() +" | "+ this.getImage() +" | "+ this.getActors() + "";
+        return this.getTitle() +" | "+ this.getYear() +" | "+ this.getGenre() +" | "+ this.getImage() +" | "+ this.getActors() + " | " + this.views;
     }
     
     
