@@ -9,6 +9,10 @@ import control.Command;
 import control.NextCommand;
 import control.PrevCommand;
 import control.ReloadCommand;
+import control.SortGenreCommand;
+import control.SortGradeCommand;
+import control.SortNewerCommand;
+import control.SortViewCommand;
 import java.util.HashMap;
 import model.MovieData;
 import view.MoviesDisplay;
@@ -34,6 +38,7 @@ public class MovieMockFrame {
         this.moviesList = new MovieData();
         this.initLogic();
         this.commands.get("r").execute();
+        this.commands.get("g").execute();
     }
 
     private void initLogic() {
@@ -49,6 +54,10 @@ public class MovieMockFrame {
         this.commands.put("r", new ReloadCommand(this.moviesList));
         this.commands.put("n", new NextCommand(this.moviesList));
         this.commands.put("p", new PrevCommand(this.moviesList));
+        this.commands.put("g", new SortGenreCommand(this.moviesList));
+        this.commands.put("a", new SortGradeCommand(this.moviesList));
+        this.commands.put("v", new SortNewerCommand(this.moviesList));
+        this.commands.put("o", new SortViewCommand(this.moviesList));
     }
     
 }
