@@ -15,6 +15,7 @@ import control.SortGenreCommand;
 import control.SortGradeCommand;
 import control.SortNewerCommand;
 import control.SortViewCommand;
+import control.ViewCommand;
 import java.util.HashMap;
 import java.util.Scanner;
 import model.MovieData;
@@ -30,6 +31,7 @@ public class MovieMockFrame {
     private MoviesDisplay currentMovieMockPanel;
     private MovieData moviesList;
     private HashMap<String,Command> commands;
+    private MoviesMockLoader moviesMockLoader;
     
     public MovieMockFrame() {
         this.execute();
@@ -38,10 +40,15 @@ public class MovieMockFrame {
     private void execute() {
         this.currentMovieMockPanel = new CurrentMovieMockPanel();
         this.movieMockPanel = new MovieMockPanel();
-        this.moviesList = new MovieData();
+        this.moviesMockLoader = new MoviesMockLoader();
+        this.moviesList = new MovieData(this.moviesMockLoader.load());
         this.initLogic();
+        this.start();
+    }
+
+    private void start() {
+        this.commands.get("reload").execute();
         Scanner scanner = new Scanner(System.in);
-        this.commands.get("r").execute();
         while(true) {
             this.commands.getOrDefault(scanner.next(), NullCommand.Instance).execute();
         }
@@ -57,13 +64,14 @@ public class MovieMockFrame {
 
     private void createComands() {
         this.commands = new HashMap();
-        this.commands.put("r", new ReloadCommand(this.moviesList));
-        this.commands.put("n", new NextCommand(this.moviesList));
-        this.commands.put("p", new PrevCommand(this.moviesList));
-        this.commands.put("g", new SortGenreCommand(this.moviesList));
-        this.commands.put("a", new SortGradeCommand(this.moviesList));
-        this.commands.put("v", new SortNewerCommand(this.moviesList));
-        this.commands.put("o", new SortViewCommand(this.moviesList));
+        this.commands.put("reload", new ReloadCommand(this.moviesList));
+        this.commands.put("next", new NextCommand(this.moviesList));
+        this.commands.put("prev", new PrevCommand(this.moviesList));
+        this.commands.put("by_genre", new SortGenreCommand(this.moviesList));
+        this.commands.put("by_grade", new SortGradeCommand(this.moviesList));
+        this.commands.put("by_newer", new SortNewerCommand(this.moviesList));
+        this.commands.put("by_views", new SortViewCommand(this.moviesList));
+        this.commands.put("play", new ViewCommand(this.moviesList));
         this.commands.put("q", new ExitCommand());
     }
     

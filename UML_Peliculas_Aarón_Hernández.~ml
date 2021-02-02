@@ -2398,15 +2398,9 @@
 <XPD:REF name="Views[1]">PtLV7IHO5UWQQxvgXFbeeAAA</XPD:REF>
 <XPD:REF name="Views[2]">SdLlxxuOhEaX0c5TP0Wx6gAA</XPD:REF>
 <XPD:REF name="Views[3]">/VNBYXFdvUaISH4iwB+5tAAA</XPD:REF>
-<XPD:ATTR name="#Operations" type="integer">2</XPD:ATTR>
+<XPD:ATTR name="#Operations" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="Operations[0]" type="UMLOperation" guid="GhhXB3M3OESJ93Xys8i1QwAA">
 <XPD:ATTR name="Name" type="string">execute</XPD:ATTR>
-<XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
-<XPD:REF name="Owner">7jQMigw1NU6QCj+ayUwjCQAA</XPD:REF>
-</XPD:OBJ>
-<XPD:OBJ name="Operations[1]" type="UMLOperation" guid="DhJU7zqtjESRI2Ti/ggaBQAA">
-<XPD:ATTR name="Name" type="string">start</XPD:ATTR>
-<XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:REF name="Owner">7jQMigw1NU6QCj+ayUwjCQAA</XPD:REF>
 </XPD:OBJ>
 <XPD:ATTR name="#Associations" type="integer">5</XPD:ATTR>

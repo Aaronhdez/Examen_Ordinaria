@@ -83,6 +83,10 @@ public class Movie {
         this.views = views;
     }
 
+    public void view() {
+        this.views += 1;
+    }
+    
     @Override
     public String toString() {
         return this.getTitle() +" | "+ this.getYear() +" | "+ this.getGenre() +" | "+ this.getImage() +" | "+ this.getActors() + " | " + this.views;

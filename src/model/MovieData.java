@@ -20,20 +20,10 @@ public class MovieData {
     private Movie currentMovie;
     private int index;
 
-    public MovieData() {
+    public MovieData(ArrayList<Movie> load) {
         this.observers = new ArrayList();
-        this.moviesList = new ArrayList();
+        this.moviesList = load;
         this.index = 0;
-        this.load();
-    }
-
-    //Implemnatar con el image Loader
-    private void load() {
-        this.add(new Movie("Película1","1999","Terror","Imagen1","Actores",3));
-        this.add(new Movie("Película2","1992","Terror","Imagen2","Actores2",2));
-        this.add(new Movie("Película3","1992","Acción","Imagen3","Actores3",4));
-        this.add(new Movie("Película4","1995","Drama","Imagen3","Actores3",7));
-        this.add(new Movie("Película5","1995","Drama","Imagen3","Actores3",8));
         this.currentMovie = this.moviesList.get(0);
     }
     
@@ -77,7 +67,7 @@ public class MovieData {
             public int compare(Object t, Object t1) {
                 Movie m1 = (Movie) t;
                 Movie m2 = (Movie) t1;
-                return -(m1.getViews()+"").compareTo(m2.getViews()+"");
+                return (m1.getViews()+"").compareTo(m2.getViews()+"");
             }
         });
     }
@@ -88,7 +78,7 @@ public class MovieData {
             public int compare(Object t, Object t1) {
                 Movie m1 = (Movie) t;
                 Movie m2 = (Movie) t1;
-                return (m1.getGrade()+"").compareTo(m2.getGrade()+"");
+                return -(m1.getGrade()+"").compareTo(m2.getGrade()+"");
             }
         });
     }
@@ -96,6 +86,12 @@ public class MovieData {
     //Commands
     public void reload(){
         this.changeStatus();
+    }
+    
+    public void viewCurrentMovie() {
+        System.out.println("Reproduciendo la película: "+this.currentMovie.getTitle());
+        this.currentMovie.view();
+        this.reload();
     }
     
     public void next(){
