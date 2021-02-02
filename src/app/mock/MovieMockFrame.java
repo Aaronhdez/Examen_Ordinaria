@@ -47,7 +47,7 @@ public class MovieMockFrame {
     }
 
     private void start() {
-        this.commands.get("reload").execute();
+        this.commands.get("show").execute();
         Scanner scanner = new Scanner(System.in);
         while(true) {
             this.commands.getOrDefault(scanner.next(), NullCommand.Instance).execute();
@@ -64,7 +64,7 @@ public class MovieMockFrame {
 
     private void createComands() {
         this.commands = new HashMap();
-        this.commands.put("reload", new ReloadCommand(this.moviesList));
+        this.commands.put("show", new ReloadCommand(this.moviesList));
         this.commands.put("next", new NextCommand(this.moviesList));
         this.commands.put("prev", new PrevCommand(this.moviesList));
         this.commands.put("by_genre", new SortGenreCommand(this.moviesList));

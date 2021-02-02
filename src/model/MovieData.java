@@ -136,8 +136,7 @@ public class MovieData {
             default:
                 break;
         }
-        this.currentMovie = this.moviesList.get(0);
-        this.index = 0;
+        this.index = this.moviesList.indexOf(this.currentMovie);
         this.changeStatus();
     }
 
