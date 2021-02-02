@@ -82,6 +82,11 @@ public class Movie {
     public void setViews(int views) {
         this.views = views;
     }
+
+    @Override
+    public String toString() {
+        return this.getTitle() +" | "+ this.getYear() +" | "+ this.getGenre() +" | "+ this.getImage() +" | "+ this.getActors() + "";
+    }
     
     
 }

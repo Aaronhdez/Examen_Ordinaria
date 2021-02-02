@@ -45,14 +45,9 @@ public class MovieData {
         return currentMovie;
     }
     
-    public void registerObservers(Observer obs){
-        this.observers.add(obs);
-    }
- 
-    private void changeStatus(){
-        for (Observer observer : this.observers) {
-            observer.change();
-        }
+    //Commands
+    public void reload(){
+        this.changeStatus();
     }
     
     public void next(){
@@ -73,6 +68,25 @@ public class MovieData {
         }
         this.currentMovie = this.moviesList.get(index);
         this.changeStatus();
+    }
+
+    @Override
+    public String toString() {
+        String res="";
+        for (Movie movie : moviesList) {
+            res+="\n"+movie.toString();
+        }
+        return res;
+    }
+    
+    public void registerObservers(Observer obs){
+        this.observers.add(obs);
+    }
+ 
+    private void changeStatus(){
+        for (Observer observer : this.observers) {
+            observer.change();
+        }
     }
     
     public static interface Observer{

@@ -8,6 +8,7 @@ package app.mock;
 import control.Command;
 import control.NextCommand;
 import control.PrevCommand;
+import control.ReloadCommand;
 import java.util.HashMap;
 import model.MovieData;
 import view.MoviesDisplay;
@@ -32,6 +33,7 @@ public class MovieMockFrame {
         this.movieMockPanel = new MovieMockPanel();
         this.moviesList = new MovieData();
         this.initLogic();
+        this.commands.get("r").execute();
     }
 
     private void initLogic() {
@@ -44,6 +46,7 @@ public class MovieMockFrame {
 
     private void createComands() {
         this.commands = new HashMap();
+        this.commands.put("r", new ReloadCommand(this.moviesList));
         this.commands.put("n", new NextCommand(this.moviesList));
         this.commands.put("p", new PrevCommand(this.moviesList));
     }

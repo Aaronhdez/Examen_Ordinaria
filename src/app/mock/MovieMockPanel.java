@@ -32,7 +32,7 @@ public class MovieMockPanel implements MoviesDisplay {
     @Override
     public void change() {
         System.out.println("LISTA ACTUAL");
-        System.out.println(this.movieData.getMoviesList().toString());
+        System.out.println(this.movieData.toString());
     }
 
     
