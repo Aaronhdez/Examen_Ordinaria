@@ -7,7 +7,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.TreeSet;
 
 /**
  *
@@ -39,6 +38,7 @@ public class MovieData {
         return currentMovie;
     }
     
+    //Ordenaciones
     private void sortByGenre() {
         this.moviesList.sort(new Comparator() {
             @Override
@@ -141,7 +141,6 @@ public class MovieData {
     }
 
     //Others
-    
     @Override
     public String toString() {
         String res="";
@@ -152,7 +151,6 @@ public class MovieData {
     }
     
     //MVC
-    
     public void registerObservers(Observer obs){
         this.observers.add(obs);
     }
