@@ -6,6 +6,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.TreeSet;
 
 /**
  *
@@ -29,7 +31,9 @@ public class MovieData {
     private void load() {
         this.add(new Movie("Película1","1999","Terror","Imagen1","Actores",3));
         this.add(new Movie("Película2","1992","Terror","Imagen2","Actores2",2));
-        this.add(new Movie("Película2","1992","Acción","Imagen2","Actores2",2));
+        this.add(new Movie("Película3","1992","Acción","Imagen3","Actores3",3));
+        this.add(new Movie("Película4","1995","Drama","Imagen3","Actores3",3));
+        this.add(new Movie("Película5","1995","Drama","Imagen3","Actores3",3));
         this.currentMovie = this.moviesList.get(0);
     }
     
@@ -43,6 +47,50 @@ public class MovieData {
     
     public Movie getCurrentMovie() {
         return currentMovie;
+    }
+    
+    private void sortByGenre() {
+        this.moviesList.sort(new Comparator() {
+            @Override
+            public int compare(Object t, Object t1) {
+                Movie m1 = (Movie) t;
+                Movie m2 = (Movie) t1;
+                return m1.getGenre().compareTo(m2.getGenre());
+            }
+        });
+    }
+
+    private void sortByNewer() {
+        this.moviesList.sort(new Comparator() {
+            @Override
+            public int compare(Object t, Object t1) {
+                Movie m1 = (Movie) t;
+                Movie m2 = (Movie) t1;
+                return m1.getGenre().compareTo(m2.getGenre());
+            }
+        });
+    }
+    
+    private void sortByViews() {
+        this.moviesList.sort(new Comparator() {
+            @Override
+            public int compare(Object t, Object t1) {
+                Movie m1 = (Movie) t;
+                Movie m2 = (Movie) t1;
+                return m1.getGenre().compareTo(m2.getGenre());
+            }
+        });
+    }
+    
+    private void sortByGrade() {
+        this.moviesList.sort(new Comparator() {
+            @Override
+            public int compare(Object t, Object t1) {
+                Movie m1 = (Movie) t;
+                Movie m2 = (Movie) t1;
+                return m1.getGenre().compareTo(m2.getGenre());
+            }
+        });
     }
     
     //Commands
@@ -69,7 +117,31 @@ public class MovieData {
         this.currentMovie = this.moviesList.get(index);
         this.changeStatus();
     }
+    
+    public void autoSort(String field) {
+        switch(field){
+            case "genre":
+                this.sortByGenre();
+                break;
+            case "newer":
+                this.sortByNewer();
+                break;
+            case "views":
+                this.sortByViews();
+                break;
+            case "grade":
+                this.sortByGrade();
+                break;
+            default:
+                break;
+        }
+        this.currentMovie = this.moviesList.get(0);
+        this.index = 0;
+        this.changeStatus();
+    }
 
+    //Others
+    
     @Override
     public String toString() {
         String res="";
@@ -78,6 +150,8 @@ public class MovieData {
         }
         return res;
     }
+    
+    //MVC
     
     public void registerObservers(Observer obs){
         this.observers.add(obs);
