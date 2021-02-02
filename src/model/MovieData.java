@@ -67,7 +67,7 @@ public class MovieData {
             public int compare(Object t, Object t1) {
                 Movie m1 = (Movie) t;
                 Movie m2 = (Movie) t1;
-                return (m1.getViews()+"").compareTo(m2.getViews()+"");
+                return -((Integer) m1.getViews()).compareTo((Integer)m2.getViews());
             }
         });
     }
@@ -78,7 +78,7 @@ public class MovieData {
             public int compare(Object t, Object t1) {
                 Movie m1 = (Movie) t;
                 Movie m2 = (Movie) t1;
-                return -(m1.getGrade()+"").compareTo(m2.getGrade()+"");
+                return -((Float) m1.getGrade()).compareTo((Float) m2.getGrade());
             }
         });
     }
